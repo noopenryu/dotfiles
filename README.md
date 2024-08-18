@@ -11,3 +11,5 @@ https://gist.github.com/AraujoJordan/6308ade5033181636e2fcc907e2cee0b
 About multi workspace in dual monitor: https://askubuntu.com/questions/1059479/dual-monitor-workspaces-in-ubuntu-18-04
 
 Install language version manager: node (nvm), go (gvm), java (sdkman), python (conda, virtualvenv).
+
+https://askubuntu.com/questions/1509661/could-not-switch-the-monitor-configuration-on-none-1-1-connected-output
