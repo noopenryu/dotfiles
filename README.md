@@ -13,3 +13,6 @@ About multi workspace in dual monitor: https://askubuntu.com/questions/1059479/d
 Install language version manager: node (nvm), go (gvm), java (sdkman), python (conda, virtualvenv).
 
 https://askubuntu.com/questions/1509661/could-not-switch-the-monitor-configuration-on-none-1-1-connected-output
+
+Disable FN mode in external keyboard connected by bluetooth on Ubuntu:
+```echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode```
