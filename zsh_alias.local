@@ -1,0 +1,45 @@
+# alias config
+
+# neo-vim
+alias vim="nvim"
+
+# replace command by lsd
+alias ls='lsd'
+alias l='lsd -l'
+alias la='lsd -a'
+alias lla='lsd -la'
+alias lt='lsd --tree'
+
+
+# Fast vim edit config app alias
+alias configvim="nvim $HOME/.config/nvim/init.vim"
+alias configpluginvim="nvim $HOME/.config/nvim/plugins.vim"
+alias configzsh="nvim $HOME/.zshrc"
+alias configghossty="nvim $HOME/.config/ghostty/config"
+
+# docker command alias
+alias dockerremoveallcontainers="docker ps -aq | xargs -r docker rm -f"
+
+alias sync_ohmyposh_theme="bash $HOME/Documents/codespace/configurations/dotfiles/scripts/oh-my-posh/sync-themes.sh"
+
+# Reload configs
+alias reloadzsh="source $HOME/.zshrc"
+
+# K3s
+alias stopk3s="sudo systemctl stop k3s k3s-agent"
+alias killk3s="/usr/local/bin/k3s-killall.sh"
+
+# Disable FN in bluetooth keyboard connect
+alias disablefn="echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode"
+
+# Starship
+alias starshipconfig="nvim $HOME/.config/starship.toml"
+
+# Git
+alias gits='git status'
+alias gitd='git diff'
+alias gitl='git log --online --graph --decorate --all'
+alias gitc='git commit -m'
+alias gitf='git fetch'
+alias gitp='git pull'
+
