@@ -10,10 +10,7 @@ alias la='lsd -a'
 alias lla='lsd -la'
 alias lt='lsd --tree'
 
-
 # Fast vim edit config app alias
-alias configvim="nvim $HOME/.config/nvim/init.vim"
-alias configpluginvim="nvim $HOME/.config/nvim/plugins.vim"
 alias configzsh="nvim $HOME/.zshrc"
 alias configghossty="nvim $HOME/.config/ghostty/config"
 
@@ -43,3 +40,52 @@ alias gitc='git commit -m'
 alias gitf='git fetch'
 alias gitp='git pull'
 
+# Replace du by dust (du-dust)
+alias du='dust'
+
+# Replace tail by lnav
+
+# Watch nvidia-smi
+alias gpu_log="watch -n0.1 nvidia-smi"
+
+# backup dotfiles
+backup_dotfiles() {
+  local dotfiles_dir="${HOME}/Documents/codespace/dotfiles"
+  local current_date
+  current_date=$(date +%Y-%m-%d)
+
+  # Check if dotfiles repo exists
+  if [[ ! -d "$dotfiles_dir" ]]; then
+    echo "Error: Target directory $dotfiles_dir does not exist." >&2
+    return 1
+  fi
+
+  # Run in a subshell () to prevent changing the current shell's working directory
+  (
+    set -e # Exit immediately if any command fails
+
+    # Copy single dotfiles
+    cp "${HOME}/.zshrc" "${dotfiles_dir}/zshrc.local"
+    cp "${HOME}/.zsh_alias" "${dotfiles_dir}/zsh_alias.local"
+
+    # Sync nvim folder cleanly without nesting, excluding unnecessary cache
+    if command -v rsync >/dev/null 2>&1; then
+      rsync -av --delete --exclude=".git" "${HOME}/.config/nvim/" "${dotfiles_dir}/nvim/"
+    else
+      rm -rf "${dotfiles_dir}/nvim"
+      cp -r "${HOME}/.config/nvim" "${dotfiles_dir}/nvim"
+    fi
+
+    cd "$dotfiles_dir"
+    git add .
+
+    # Commit only if there are actual changes
+    if git diff-index --quiet HEAD --; then
+      echo "No changes detected. Nothing to commit."
+    else
+      git commit -m "backup dotfiles on ${current_date}"
+      git push
+      echo "Dotfiles successfully backed up and pushed."
+    fi
+  )
+}

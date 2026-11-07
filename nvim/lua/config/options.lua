@@ -10,6 +10,25 @@ vim.opt.autowrite = true      -- automatically write a file on buffer switch
 
 vim.opt.termguicolors = true
 
+-- nvim clipboard
+vim.opt.clipboard = 'unnamedplus'
+
+-- disable legacy plugins
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- disable netrw replace by nvim-tree.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- disable arrow keys in nvim
+local modes = { "n", "i", "v" }
+local arrows = { "<Up>", "<Down>", "<Left>", "<Right>" }
+
+for _, mode in ipairs(modes) do
+  for _, key in ipairs(arrows) do
+    vim.keymap.set(mode, key, "<nop>", { silent = true, desc = "Disable arrow keys" })
+  end
+end
