@@ -45,6 +45,9 @@ alias du='dust'
 
 # Replace tail by lnav
 
+# listen ports
+alias listenports='ss -ltn'
+
 # Watch nvidia-smi
 alias gpu_log="watch -n0.1 nvidia-smi"
 
@@ -89,3 +92,4 @@ backup_dotfiles() {
     fi
   )
 }
+

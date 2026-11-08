@@ -19,24 +19,29 @@ export NVM_DIR="$HOME/.nvm"
 
 # Lazy load nvm - only initialise when first used
 nvm() {
-  unfunction nvm node npm npx
+  unfunction nvm node npm npx pnpm
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   nvm "$@"
 }
 node() {
-  unfunction nvm node npm npx
+  unfunction nvm node npm npx pnpm
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   node "$@"
 }
 npm() {
-  unfunction nvm node npm npx
+  unfunction nvm node npm npx pnpm
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   npm "$@"
 }
 npx() {
-  unfunction nvm node npm npx
+  unfunction nvm node npm npx pnpm
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   npx "$@"
+}
+pnpm() {
+  unfunction nvm node npm npx pnpm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  pnpm "$@"
 }
 
 eval "$(starship init zsh)"
